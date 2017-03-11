@@ -10,24 +10,26 @@ public class Main {
 
         File source = new File(args[0]);
         File out = new File(source.getName().replace(".txt", "_reversed.txt"));
+
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(source)));
-        RandomAccessFile randomAccessFile = new RandomAccessFile(out, "rw");
-        // keep track of the current position (we're going backwards, so we start at the end)
+        RandomAccessFile writer = new RandomAccessFile(out, "rw");
+        writer.getChannel().truncate(0);
+        // mentine pozitia unde o sa scriem datele in fisier, pornind de la coada la cap
         long position = source.length();
-        // Reader.read will return -1 when it reached the end.
+        // readline returneaza null cand a ajuns la final
         for (String line = reader.readLine(); line != null; line = reader.readLine()) {
             StringBuilder stringBuffer = new StringBuilder(line);
-            String reversed = stringBuffer.reverse().toString()+"\n";
-            position -= reversed.length(); // \r\n is only one newline character
-            // turn the character into bytes according to the character encoding
-            // go to the proper position in the random access file
-            randomAccessFile.seek(position);
+            String reversed = stringBuffer.reverse().append("\n").toString();
 
-            // write one or more bytes for the character
-            randomAccessFile.writeUTF(reversed);
+            // mergi la pozitia corecta in fisier
+            position -= reversed.length();
+            writer.seek(position);
+
+            // scrie rezultatul
+            writer.write(reversed.getBytes("UTF-8"));
         }
-
-        randomAccessFile.close();
+        writer.close();
         reader.close();
     }
 }
