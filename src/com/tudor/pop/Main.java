@@ -9,8 +9,7 @@ public class Main {
             throw new IllegalArgumentException("Trebuie introdus numele fisierului");
 
         File source = new File(args[0]);
-        File out = new File(source.getName().replace(".txt", "_reversed.txt"));
-
+        File out = new File("java_reversed.txt");
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(source)));
         RandomAccessFile writer = new RandomAccessFile(out, "rw");
@@ -19,15 +18,14 @@ public class Main {
         long position = source.length();
         // readline returneaza null cand a ajuns la final
         for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-            StringBuilder stringBuffer = new StringBuilder(line);
-            String reversed = stringBuffer.reverse().append("\n").toString();
+            String rLine = new StringBuilder(line).reverse().append("\n").toString();
 
             // mergi la pozitia corecta in fisier
-            position -= reversed.length();
+            position -= rLine.length();
             writer.seek(position);
 
             // scrie rezultatul
-            writer.write(reversed.getBytes("UTF-8"));
+            writer.write(rLine.getBytes("UTF-8"));
         }
         writer.close();
         reader.close();
