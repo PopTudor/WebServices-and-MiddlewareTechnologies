@@ -13,12 +13,12 @@ function main($argc, $argv) {
 	$out = fopen('php_reversed.txt', 'w');
 	ftruncate($out, 0);
 	$position = filesize(basename($argv[1]));
-	for ($line = fgets($source); !empty($line); $line = fgets($source)) {
-		$line = str_replace("\n", '', $line);
-		$line = strrev($line);
-		$position -= strlen($line);
+	for ($character = fgetc($source); !empty($character); $character = fgetc($source)) {
+		$position--;
+		if ($character == "\n") $character = ' ';
+
 		fseek($out, $position);
-		fwrite($out, $line);
+		fwrite($out, $character);
 	}
 	fclose($source);
 	fflush($out);

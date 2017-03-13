@@ -11,18 +11,20 @@ public class Main {
 		File source = new File(args[0]);
 		File out = new File("java_reversed.txt");
 
-		RandomAccessFile reader = new RandomAccessFile(source,"r");
+		Reader reader = new FileReader(source);
 		RandomAccessFile writer = new RandomAccessFile(out, "rw");
 		writer.getChannel().truncate(0);
 		// mentine pozitia unde o sa scriem datele in fisier, pornind de la coada la cap
 		long position = source.length();
-		byte[] buff = new byte[1];
 		// readline returneaza null cand a ajuns la final
-		for (int line = reader.read(buff, 0, buff.length); line != -1; line = reader.read(buff, 0, buff.length)) {
+		for (int character = reader.read(); character != -1; character = reader.read()) {
 			position--;
 			writer.seek(position);
+			// pe windows linia noua este \r\n dar asa se pun doua line breaks in fisier
+			// de aceea o sa inlocuim \n cu ' '
+			if (character == '\n') character = ' ';
 			// scrie rezultatul
-			writer.write(buff,0,buff.length);
+			writer.write(character);
 		}
 		writer.close();
 		reader.close();
