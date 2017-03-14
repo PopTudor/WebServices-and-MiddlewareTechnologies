@@ -1,12 +1,13 @@
 import re, os, sys, os.path
+import random
 
 
 def main(argv):
     if len(argv) < 1:
         raise ValueError("Trebuie introdus numele fisierului")
 
-    src = open(argv[1], 'r')
-    dest = open("python_reversed.txt", 'w')
+    src = open(argv[1], 'r',newline='\r\n')
+    dest = open("python" + str(random.randrange(start=0, stop=100)) + "_reversed.txt", 'w')
     dest.truncate()
     # mentine pozitia unde o sa scriem datele in fisier, pornind de la coada la cap
     position = os.path.getsize(os.path.abspath(src.name))
@@ -15,9 +16,6 @@ def main(argv):
     while character:
         # mergi la pozitia corecta in fisier
         position -= 1
-        if character == '\n':
-            character = ' \r'
-            position-=1
         dest.seek(position)
         # scrie rezultatul
         dest.write(character)

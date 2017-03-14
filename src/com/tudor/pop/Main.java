@@ -1,6 +1,7 @@
 package com.tudor.pop;
 
 import java.io.*;
+import java.util.Random;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
@@ -9,9 +10,7 @@ public class Main {
 			throw new IllegalArgumentException("Trebuie introdus numele fisierului");
 
 		File source = new File(args[0]);
-		// daca dorim sa citim invers - din java_reversed.txt in alt fisier -
-		// trebuie inlocuit numele fisierului de mai jos cu alt fisier
-		File out = new File("java_reversed.txt");
+		File out = new File("java" + new Random().nextInt(100) + "_reversed.txt");
 
 		FileInputStream reader = new FileInputStream(source);
 		RandomAccessFile writer = new RandomAccessFile(out, "rw");

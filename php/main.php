@@ -10,15 +10,13 @@ function main($argc, $argv) {
 	if ($argc <= 1)
 		throw new InvalidArgumentException("Trebuie introdus numele fisierului");
 	$source = fopen($argv[1], 'r');
-	$out = fopen('php_reversed.txt', 'w');
+	$out = fopen("php" . rand(0, 100) . "_reversed.txt", 'w');
 	ftruncate($out, 0);
 	$position = filesize(basename($argv[1]));
-	for ($character = fgetc($source); !empty($character); $character = fgetc($source)) {
+	for ($octet = fread($source, 1); !empty($octet); $octet = fread($source, 1)) {
 		$position--;
-		if ($character == "\n") $character = ' ';
-
 		fseek($out, $position);
-		fwrite($out, $character);
+		fwrite($out, $octet);
 	}
 	fclose($source);
 	fflush($out);
