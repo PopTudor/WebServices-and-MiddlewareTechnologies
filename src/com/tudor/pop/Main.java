@@ -9,22 +9,21 @@ public class Main {
 			throw new IllegalArgumentException("Trebuie introdus numele fisierului");
 
 		File source = new File(args[0]);
+		// daca dorim sa citim invers - din java_reversed.txt in alt fisier -
+		// trebuie inlocuit numele fisierului de mai jos cu alt fisier
 		File out = new File("java_reversed.txt");
 
-		Reader reader = new FileReader(source);
+		FileInputStream reader = new FileInputStream(source);
 		RandomAccessFile writer = new RandomAccessFile(out, "rw");
 		writer.getChannel().truncate(0);
 		// mentine pozitia unde o sa scriem datele in fisier, pornind de la coada la cap
 		long position = source.length();
 		// readline returneaza null cand a ajuns la final
-		for (int character = reader.read(); character != -1; character = reader.read()) {
+		for (int octet = reader.read(); octet != -1; octet = reader.read()) {
 			position--;
 			writer.seek(position);
-			// pe windows linia noua este \r\n dar asa se pun doua line breaks in fisier
-			// de aceea o sa inlocuim \n cu ' '
-			if (character == '\n') character = ' ';
 			// scrie rezultatul
-			writer.write(character);
+			writer.write(octet);
 		}
 		writer.close();
 		reader.close();
