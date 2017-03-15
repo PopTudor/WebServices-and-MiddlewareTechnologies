@@ -9,7 +9,7 @@ class TestClass
         if (args.Length < 1)
             throw new System.ArgumentException("Trebuie introdus numele fisierului");
         FileStream source = File.OpenRead(args[0]);
-        FileStream dest = File.OpenWrite("C#_reverse.txt");
+        FileStream dest = File.OpenWrite("C#"+new Random().Next(0,100)+"_reverse.txt");
         dest.SetLength(0);
 
         dest.Seek(1,SeekOrigin.Begin);
@@ -18,12 +18,11 @@ class TestClass
         dest.WriteByte(Convert.ToByte('e'));
 
         long position = source.Length;
-        for (int  line = source.ReadByte(); line != -1; line = source.ReadByte())
+        for (int  octet = source.ReadByte(); octet != -1; octet = source.ReadByte())
         {
             position--;
-            if(line=='\n') line = ' ';
             dest.Seek(position, SeekOrigin.Begin);
-            dest.WriteByte((byte)line);
+            dest.WriteByte((byte)octet);
         }
         source.Dispose();
         dest.Dispose();

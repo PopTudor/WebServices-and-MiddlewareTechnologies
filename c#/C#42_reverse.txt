@@ -1,0 +1,31 @@
+
+}
+}    
+;)(esopsiD.tsed        
+;)(esopsiD.ecruos        
+}        
+;)tetco)etyb((etyBetirW.tsed            
+;)nigeB.nigirOkeeS ,noitisop(keeS.tsed            
+;--noitisop            
+{        
+))(etyBdaeR.ecruos = tetco ;1- =! tetco ;)(etyBdaeR.ecruos = tetco  tni( rof        
+;htgneL.ecruos = noitisop gnol        
+
+;))'e'(etyBoT.trevnoC(etyBetirW.tsed        
+;)nigeB.nigirOkeeS ,0(keeS.tsed        
+;))'d'(etyBoT.trevnoC(etyBetirW.tsed        
+;)nigeB.nigirOkeeS,1(keeS.tsed        
+
+;)0(htgneLteS.tsed        
+;)"txt.esrever_"+)001,0(txeN.)(modnaR wen+"#C"(etirWnepO.eliF = tsed maertSeliF        
+;)]0[sgra(daeRnepO.eliF = ecruos maertSeliF        
+;)"iulureisif elemun sudortni eiuberT"(noitpecxEtnemugrA.metsyS wen worht            
+)1 < htgneL.sgra( fi        
+{    
+)sgra ][gnirts(niaM diov citats    
+{
+ssalCtseT ssalc
+
+;OI.metsyS gnisu
+;txeT.metsyS gnisu
+;metsyS gnisu

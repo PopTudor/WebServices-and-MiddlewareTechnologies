@@ -1,8 +1,0 @@
-C:\Users\Tudor\Desktop\ubb\WSMT\tema1\c#\bin\Debug\netcoreapp1.1\main.deps.json
-C:\Users\Tudor\Desktop\ubb\WSMT\tema1\c#\bin\Debug\netcoreapp1.1\main.runtimeconfig.json
-C:\Users\Tudor\Desktop\ubb\WSMT\tema1\c#\bin\Debug\netcoreapp1.1\main.runtimeconfig.dev.json
-C:\Users\Tudor\Desktop\ubb\WSMT\tema1\c#\obj\Debug\netcoreapp1.1\main.AssemblyInfo.cs
-C:\Users\Tudor\Desktop\ubb\WSMT\tema1\c#\bin\Debug\netcoreapp1.1\main.dll
-C:\Users\Tudor\Desktop\ubb\WSMT\tema1\c#\bin\Debug\netcoreapp1.1\main.pdb
-C:\Users\Tudor\Desktop\ubb\WSMT\tema1\c#\obj\Debug\netcoreapp1.1\main.dll
-C:\Users\Tudor\Desktop\ubb\WSMT\tema1\c#\obj\Debug\netcoreapp1.1\main.pdb
