@@ -15,7 +15,7 @@ import wsmt.bursa.Bursa;
  * Created by Tudor on 30-Mar-17.
  */
 @WebServlet("/exec")
-public class ActiuniService extends HessianServlet  {
+public class BursaService extends HessianServlet  {
 	
 	public static void main(String[] args) throws Exception {
 		Server server = new Server(8081);

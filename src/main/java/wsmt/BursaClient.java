@@ -11,8 +11,8 @@ import wsmt.bursa.IBursa;
 /**
  * Created by Tudor on 09-Apr-17.
  */
-public class ExecHessClient {
-	public ExecHessClient(String url) throws MalformedURLException {
+public class BursaClient {
+	public BursaClient(String url) throws MalformedURLException {
 		HessianProxyFactory factory = new HessianProxyFactory();
 		factory.setHessian2Request(true);
 		
@@ -26,8 +26,8 @@ public class ExecHessClient {
 	
 	public static void main(String[] args) throws MalformedURLException {
 		if (args.length > 0)
-			new ExecHessClient(args[0]); //http://localhost:80/ExecHessServ.php
+			new BursaClient(args[0]); //http://localhost:80/ExecHessServ.php
 		else
-			new ExecHessClient("http://localhost:8081/bursa");
+			new BursaClient("http://localhost:8081/bursa");
 	}
 }
