@@ -4,8 +4,6 @@ import com.caucho.hessian.client.HessianProxyFactory;
 
 import java.net.MalformedURLException;
 
-import wsmt.bursa.Apple;
-import wsmt.bursa.Google;
 import wsmt.bursa.IBursa;
 
 /**
@@ -16,12 +14,12 @@ public class BursaClient {
 		HessianProxyFactory factory = new HessianProxyFactory();
 		factory.setHessian2Request(true);
 		
-		IBursa basic = (IBursa) factory.create(IBursa.class, url);
+		IBursa bursa = (IBursa) factory.create(IBursa.class, url);
 		
-		System.out.println(basic.cumpara(new Apple(), 5));
-		System.out.println(basic.cumpara(new Google(), 3));
-		System.out.println(basic.vinde(new Google(), 1));
-		System.out.println(basic.statistica());
+		System.out.println(bursa.cumpara("apple", 5));
+		System.out.println(bursa.cumpara("google", 3));
+		System.out.println(bursa.vinde("google", 1));
+		System.out.println(bursa.statistica());
 	}
 	
 	public static void main(String[] args) throws MalformedURLException {

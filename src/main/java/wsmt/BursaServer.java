@@ -15,13 +15,15 @@ import wsmt.bursa.Bursa;
  * Created by Tudor on 30-Mar-17.
  */
 @WebServlet("/exec")
-public class BursaService extends HessianServlet  {
+public class BursaServer extends HessianServlet  {
+	public static final Integer PORT = 8081;
+	public static String BURSA_ENDPOINT = "/bursa";
 	
 	public static void main(String[] args) throws Exception {
-		Server server = new Server(8081);
+		Server server = new Server(PORT);
 		ServletHandler handler = new ServletHandler();
 		server.setHandlers(new Handler[]{handler});
-		handler.addServletWithMapping(Bursa.class, "/bursa");
+		handler.addServletWithMapping(Bursa.class, BURSA_ENDPOINT);
 		System.out.println("hessian server started");
 		server.start();
 		server.join();

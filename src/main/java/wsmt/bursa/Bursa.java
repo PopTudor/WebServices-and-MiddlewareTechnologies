@@ -16,20 +16,20 @@ public class Bursa extends HessianServlet implements IBursa {
 	}
 	
 	@Override
-	public String cumpara(Actiune actiune, int numarActiuni) {
+	public String cumpara(String actiune, int numarActiuni) {
 		List<Actiune> actiunes = new ArrayList<>(numarActiuni);
 		for (int i = 0; i < numarActiuni; i++)
-			actiunes.add(actiune);
+			actiunes.add(createActiune(actiune));
 		actiuni.addAll(actiunes);
 		return String.format("Ai cumparat %d actiuni in valoare de %s", actiunes.size(), calculeazaValoare(actiunes));
 	}
 	
 	@Override
-	public String vinde(Actiune actiuneUser, int numarActiuni) {
+	public String vinde(String actiuneUser, int numarActiuni) {
 		double sum = 0;
 		int count = 0;
 		for (int i = 0; i < actiuni.size() && count < numarActiuni; i++) {
-			if (actiuni.get(i).nume.equals(actiuneUser.nume)) {
+			if (actiuni.get(i).nume.equals(actiuneUser)) {
 				sum += actiuni.get(i).price;
 				actiuni.remove(i);
 				count++;
@@ -47,5 +47,14 @@ public class Bursa extends HessianServlet implements IBursa {
 		double sum = 0;
 		for (Actiune it : actiunes) sum += it.price;
 		return sum;
+	}
+	
+	public static Actiune createActiune(String companie) {
+		if (companie.compareToIgnoreCase(Apple.APPLE) == 0)
+			return new Apple();
+		else if (companie.compareToIgnoreCase(Google.GOOGLE) == 0)
+			return new Google();
+		else
+			return new EmptyActiune();
 	}
 }
