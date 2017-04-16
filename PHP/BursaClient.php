@@ -26,5 +26,5 @@ class BursaClientPHP
 if (isset($_GET["urlServ"]))
     new BursaClientPHP($_GET["urlServ"]); //http://localhost:8080/exec
 else
-    new BursaClientPHP("http://localhost:8081/bursa");
+    new BursaClientPHP("http://localhost:8081/BursaServer.php");
 ?>

@@ -13,8 +13,10 @@ require("Actiune.php");
 
 class Apple extends Actiune
 {
+	static $APPLE = "APPLE";
     function __construct() {
         $this->pret = 56.34;
-        $this->nume = "APPLE";
+        $this->nume = Apple::$APPLE;
     }
+
 }

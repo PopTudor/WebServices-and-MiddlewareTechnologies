@@ -11,6 +11,6 @@ namespace bursa;
 
 class Actiune
 {
-    protected $nume;
-    protected $pret;
+    public $nume=0.0;
+    public $pret=0.0;
 }

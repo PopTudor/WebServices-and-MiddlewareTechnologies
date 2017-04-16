@@ -9,13 +9,12 @@
 namespace bursa;
 
 
-class Google extends Actiune
+class EmptyActiune extends Actiune
 {
-	static $GOOGLE = "GOOGLE";
 
 	function __construct()
 	{
-		$this->pret = 57.33;
-		$this->nume = Google::$GOOGLE;
+		$this->pret = 0.0;
+		$this->nume = "Empty";
 	}
 }
