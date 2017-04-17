@@ -16,9 +16,9 @@ class BursaClientPHP
         echo "Client Hessian PHP: " . $urlServ . "<br/>\n";
         $bursa = new HessianClient($urlServ);
 
-        echo $bursa->cumpara("APPLE", 5);
-        echo $bursa->cumpara("google", 3);
-        echo $bursa->cumpara("google", 1);
+//        echo $bursa->cumpara("APPLE", 5);
+//        echo $bursa->cumpara("google", 3);
+//        echo $bursa->cumpara("google", 1);
         echo $bursa->statistica();
     }
 }

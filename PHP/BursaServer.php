@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 
 /**
  * Created by IntelliJ IDEA.
@@ -6,8 +9,12 @@
  * Date: 09-Apr-17
  * Time: 7:18 PM
  */
+
 include_once("bursa/Bursa.php");
 include_once("hessian/src/HessianService.php");
 
-$service = new HessianService(new bursa\Bursa());
+$bursaService = new bursa\Bursa();
+$service = new HessianService($bursaService);
 $service->handle();
+
+?>
