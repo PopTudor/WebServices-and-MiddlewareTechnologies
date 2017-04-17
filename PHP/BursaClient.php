@@ -16,10 +16,10 @@ class BursaClientPHP
 		echo "Client Hessian PHP: " . $urlServ . "<br/>\n";
 		$bursa = new HessianClient($urlServ);
 
-//        echo $bursa->cumpara("APPLE", 5);
-//        echo $bursa->cumpara("google", 3);
+//        echo $bursa->cumpara("APPLE", 2);
 //        echo $bursa->cumpara("google", 1);
-//		echo $bursa->vinde("apple",1);
+		echo $bursa->vinde("google",1);
+		echo $bursa->vinde("apple",1);
 		echo $bursa->statistica();
 	}
 }
@@ -27,11 +27,9 @@ class BursaClientPHP
 function main()
 {
 	// Java
-	new BursaClientPHP("http://localhost:8081/bursa");
+//	new BursaClientPHP("localhost:8081/bursa");
 	// PHP
-	//	new BursaClientPHP("http://localhost:8081/BursaServer.php");
+		new BursaClientPHP("http://localhost:8081/BursaServer.php");
 }
 
-main()
-
-?>
+main();

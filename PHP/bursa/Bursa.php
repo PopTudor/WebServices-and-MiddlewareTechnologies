@@ -39,16 +39,14 @@ class Bursa
 	{
 		$sum = 0.0;
 		$count = 0;
-		for ($i = 0; $i < count($this->actiuni) && $count < $numarActiuni; $i++) {
-			$actiune = $this->actiuni[$i];
-			if ($actiune instanceof Apple) {
-				if (strcasecmp($actiune->nume, $actiuneUser)==0) {
-					$sum += $actiune->pret;
-					unset($this->actiuni[$i]);
-					$count++;
-				}
-			}else
-				$sum++;
+		foreach ($this->actiuni as $index => $actiune) {
+			if ($count >= $numarActiuni)
+				break;
+			if ($actiune instanceof Actiune && strcasecmp($actiune->nume, $actiuneUser) == 0) {
+				$sum += $actiune->pret;
+				unset($this->actiuni[$index]);
+				$count++;
+			}
 		}
 		$this->saveActiuniToFile($this->actiuni);
 		return sprintf("Ai vandut %d actiuni in valoare de %s$\n", $count, $sum);
@@ -85,11 +83,14 @@ class Bursa
 	function getActiuniFromFile()
 	{
 		$fileArray = unserialize(file_get_contents("ar.txt", true));
+		if ($fileArray == null || empty($fileArray))
+			return [];
 		return $fileArray;
 	}
 
 	function saveActiuniToFile($array)
 	{
-		file_put_contents("ar.txt", serialize($array), LOCK_EX);
+		$result = serialize($array);
+		file_put_contents("ar.txt", $result);
 	}
 }
