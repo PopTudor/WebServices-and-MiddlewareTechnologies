@@ -56,7 +56,7 @@ class Bursa
 
 	function statistica()
 	{
-		$resultString = "Status:\n";
+		$resultString = "********* Status *********\n";
 		$resultString .= "Numar actiuni: " . count($this->actiuni) . "\n";
 		$resultString .= "Actiuni: " . json_encode($this->actiuni);
 		return $resultString;

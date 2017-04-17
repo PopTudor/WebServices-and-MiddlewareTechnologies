@@ -17,8 +17,8 @@ public class BursaClient {
 		IBursa bursa = (IBursa) factory.create(IBursa.class, url);
 		
 //		System.out.println(bursa.cumpara("apple", 5));
-//		System.out.println(bursa.cumpara("google", 3));
-//		System.out.println(bursa.vinde("google", 1));
+		System.out.println(bursa.cumpara("google", 3));
+		System.out.println(bursa.vinde("apple", 1));
 		System.out.println(bursa.statistica());
 	}
 	
@@ -26,7 +26,7 @@ public class BursaClient {
 		if (args.length > 0)
 			new BursaClient(args[0]); //http://localhost:80/ExecHessServ.php
 		else
-//			new BursaClient("http://localhost:8081/bursa");
-			new BursaClient("http://localhost:8081/BursaServer.php");
+			new BursaClient("http://localhost:8081/bursa");
+//			new BursaClient("http://localhost:8081/BursaServer.php");
 	}
 }
