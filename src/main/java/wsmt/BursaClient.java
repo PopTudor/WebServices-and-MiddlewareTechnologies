@@ -18,7 +18,7 @@ public class BursaClient {
 
 //		System.out.println(bursa.cumpara("apple", 5));
 //		System.out.println(bursa.cumpara("google", 3));
-//		System.out.println(bursa.vinde("apple", 1));
+//		System.out.println(bursa.vinde("apple", 3));
 		System.out.println(bursa.statistica());
 	}
 	
@@ -26,6 +26,6 @@ public class BursaClient {
 		// Java
 //		new BursaClient("http://localhost:8081/bursa");
 		// PHP
-					new BursaClient("http://localhost:8081/BursaClient.php");
+					new BursaClient("http://localhost:8081/BursaServer.php");
 	}
 }
