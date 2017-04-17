@@ -21,17 +21,19 @@ class Bursa
 	 */
 	public function __construct()
 	{
+//		$this->saveActiuniToFile([new Apple()]);
 		$this->actiuni = $this->getActiuniFromFile();
 	}
 
 	function getActiuniFromFile()
 	{
-		return json_decode(file_get_contents("ar.txt", true));
+		$fileArray = unserialize(file_get_contents("ar.txt", true));
+		return $fileArray;
 	}
 
 	function saveActiuniToFile($array)
 	{
-		file_put_contents("ar.txt", json_encode($array), LOCK_EX);
+		file_put_contents("ar.txt", serialize($array), LOCK_EX);
 	}
 
 	function cumpara($actiune, $numarActiuni)
@@ -48,18 +50,19 @@ class Bursa
 	{
 		$sum = 0.0;
 		$count = 0;
-		for ($i = 0; i < count($this->actiuni) && $count < $numarActiuni; $i++) {
+		for ($i = 0; $i < count($this->actiuni) && $count < $numarActiuni; $i++) {
 			$actiune = $this->actiuni[$i];
-			if ($actiune instanceof Actiune) {
-				if (strcasecmp($actiune->nume, $actiuneUser)) {
+			if ($actiune instanceof Apple) {
+				if (strcasecmp($actiune->nume, $actiuneUser)==0) {
 					$sum += $actiune->pret;
 					unset($this->actiuni[$i]);
 					$count++;
 				}
-			}
+			}else
+				$sum++;
 		}
 		$this->saveActiuniToFile($this->actiuni);
-		return sprintf("Ai vandut %d actiuni in valoare de %s$", $count, $sum);
+		return sprintf("Ai vandut %d actiuni in valoare de %s$\n", $count, $sum);
 	}
 
 	function statistica()
