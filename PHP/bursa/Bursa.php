@@ -25,17 +25,6 @@ class Bursa
 		$this->actiuni = $this->getActiuniFromFile();
 	}
 
-	function getActiuniFromFile()
-	{
-		$fileArray = unserialize(file_get_contents("ar.txt", true));
-		return $fileArray;
-	}
-
-	function saveActiuniToFile($array)
-	{
-		file_put_contents("ar.txt", serialize($array), LOCK_EX);
-	}
-
 	function cumpara($actiune, $numarActiuni)
 	{
 		$tmpArray = [];
@@ -91,5 +80,16 @@ class Bursa
 			return new Google();
 		else
 			return new EmptyActiune();
+	}
+
+	function getActiuniFromFile()
+	{
+		$fileArray = unserialize(file_get_contents("ar.txt", true));
+		return $fileArray;
+	}
+
+	function saveActiuniToFile($array)
+	{
+		file_put_contents("ar.txt", serialize($array), LOCK_EX);
 	}
 }
