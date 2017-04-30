@@ -3,9 +3,10 @@ package com.example;
 import com.example.database.Carte;
 import com.example.database.CarteRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.ArgumentPreparedStatementSetter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +27,10 @@ public class CarteService {
 		return jdbcTemplate.query("SELECT * FROM carti WHERE author LIKE ?", author, new CarteRowMapper());
 	}
 	
-	public ResponseEntity<String> saveCarte(Carte carte) {
-		return null;
+	public int saveCarte(Carte carte) {
+		PreparedStatementSetter setter = new ArgumentPreparedStatementSetter(
+				new Object[]{carte.getAuthor(), carte.getTitle()});
+		return jdbcTemplate.update("INSERT INTO carti(author,title) VALUES (?,?)", setter);
 	}
 	
 	public List<Carte> getAllCarti() {

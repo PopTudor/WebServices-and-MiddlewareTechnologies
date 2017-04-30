@@ -22,18 +22,19 @@ public class CarteController {
 	}
 	
 	@GetMapping("/{title}")
-	public Carte carti(@PathVariable("title") String carteTitle) {
+	public Carte getCarteByTitle(@PathVariable("title") String carteTitle) {
 		return carteService.getCarte(carteTitle);
 	}
 	
 	@GetMapping(params = "author")
-	public List<Carte> cartiByAuthor(String author) {
+	public List<Carte> getCartiByAuthor(String author) {
 		return carteService.getCartiByAuthor(author);
 	}
 	
 	@PostMapping
 	public ResponseEntity<String> saveCarte(@RequestBody Carte carte) {
-		return carteService.saveCarte(carte);
+		int status = carteService.saveCarte(carte);
+		return ResponseEntity.status(status).build();
 	}
 }
 
