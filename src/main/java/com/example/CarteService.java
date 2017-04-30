@@ -19,8 +19,9 @@ public class CarteService {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	Carte getCarte(String... title) {
-		return jdbcTemplate.queryForObject("SELECT * FROM carti WHERE title = ?", title, new CarteRowMapper());
+	Carte getCarteByTitle(String title) {
+		String[] strings = new String[]{title};
+		return jdbcTemplate.queryForObject("SELECT * FROM carti WHERE title = ?", strings, new CarteRowMapper());
 	}
 	
 	List<Carte> getCartiByAuthor(String... author) {
@@ -35,5 +36,10 @@ public class CarteService {
 	
 	public List<Carte> getAllCarti() {
 		return jdbcTemplate.query("SELECT * FROM carti", new BeanPropertyRowMapper<>(Carte.class));
+	}
+	
+	public List<Carte> getCartiSortByTitle(String sort) {
+		return jdbcTemplate.query("SELECT * FROM carti ORDER BY title " + sort,
+				new BeanPropertyRowMapper<>(Carte.class));
 	}
 }

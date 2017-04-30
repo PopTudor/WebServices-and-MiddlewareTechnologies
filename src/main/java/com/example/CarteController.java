@@ -23,7 +23,12 @@ public class CarteController {
 	
 	@GetMapping("/{title}")
 	public Carte getCarteByTitle(@PathVariable("title") String carteTitle) {
-		return carteService.getCarte(carteTitle);
+		return carteService.getCarteByTitle(carteTitle);
+	}
+	
+	@GetMapping("/title/{sort}")
+	public List<Carte> getCartiSortByTitle(@PathVariable("sort") String sort) {
+		return carteService.getCartiSortByTitle(sort);
 	}
 	
 	@GetMapping(params = "author")
