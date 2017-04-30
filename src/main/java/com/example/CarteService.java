@@ -4,6 +4,7 @@ import com.example.database.Carte;
 import com.example.database.CarteRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,6 @@ public class CarteService {
 	}
 	
 	public List<Carte> getAllCarti() {
-		return null;
+		return jdbcTemplate.query("SELECT * FROM carti", new BeanPropertyRowMapper<>(Carte.class));
 	}
 }
