@@ -1,6 +1,5 @@
-package com.example;
+package com.example.carte;
 
-import com.example.database.Carte;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +41,11 @@ public class CarteController {
 		return ResponseEntity.status(status).build();
 	}
 	
+	@PutMapping("{title}")
+	public ResponseEntity<String> updateCarte(@PathVariable("title") String title, @RequestBody Carte carte) {
+		int status = carteService.update(title, carte);
+		return ResponseEntity.status(status).build();
+	}
 }
 
 

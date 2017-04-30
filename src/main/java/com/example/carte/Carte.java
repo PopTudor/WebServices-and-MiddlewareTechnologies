@@ -1,4 +1,4 @@
-package com.example.database;
+package com.example.carte;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

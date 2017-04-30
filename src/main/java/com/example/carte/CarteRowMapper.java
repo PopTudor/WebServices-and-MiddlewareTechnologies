@@ -1,4 +1,4 @@
-package com.example.database;
+package com.example.carte;
 
 import org.springframework.jdbc.core.RowMapper;
 

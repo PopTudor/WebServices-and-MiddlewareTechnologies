@@ -1,7 +1,5 @@
-package com.example;
+package com.example.carte;
 
-import com.example.database.Carte;
-import com.example.database.CarteRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.ArgumentPreparedStatementSetter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -41,5 +39,10 @@ public class CarteService {
 	public List<Carte> getCartiSortByTitle(String sort) {
 		return jdbcTemplate.query("SELECT * FROM carti ORDER BY title " + sort,
 				new BeanPropertyRowMapper<>(Carte.class));
+	}
+	
+	public int update(String title, Carte carte) {
+		return jdbcTemplate.update("UPDATE carti SET title = ?, author = ?, pret = ? WHERE title = ?",
+				carte.getTitle(), carte.getAuthor(), carte.getPret(), title);
 	}
 }
