@@ -1,12 +1,12 @@
 package com.example;
 
+import com.example.database.Carte;
+import com.example.database.CarteRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 /**
@@ -16,12 +16,10 @@ import java.util.List;
 public class CarteService {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-	@Autowired
-	DataSource dataSource;
 	
-	Carte getCarte(String id) {
-        return Carte.builder().author("a").id(1).title("titlu").build();
-    }
+	Carte getCarte(String... title) {
+		return jdbcTemplate.queryForObject("SELECT * FROM carti WHERE title = ?", title, new CarteRowMapper());
+	}
 	
 	public ResponseEntity<String> saveCarte(Carte carte) {
 		return null;

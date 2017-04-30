@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.database.Carte;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class Tema5Application {
 		ddlSetup();
 		Carte carte = Carte.builder().author("me").title("tree").build();
 		Stream.of(carte).forEach(carte1 -> {
-			jdbcTemplate.update("INSERT  INTO  carti(author,title) VALUES (?,?)", carte.author, carte.title);
+			jdbcTemplate.update("INSERT  INTO  carti(author,title) VALUES (?,?)", carte.getAuthor(), carte.getTitle());
 		});
 	}
 	
@@ -39,9 +40,9 @@ public class Tema5Application {
 //	public void insertTestData() {
 //		try (Connection connection = dataSource.getConnection()) {
 //			ddlSetup(connection);
-//			Carte carte = Carte.builder().author("me").title("tree").build();
+//			CarteContract carte = CarteContract.builder().author("me").title("tree").build();
 //			// Split up the array of whole names into an array of first/last names
-//			for (Carte carte1 : Arrays.asList(carte)) {
+//			for (CarteContract carte1 : Arrays.asList(carte)) {
 //				PreparedStatement statement1 = connection.prepareStatement(
 //						"INSERT INTO carti(title,author) VALUES (?,?)",
 //						new String[]{"title", "author"});

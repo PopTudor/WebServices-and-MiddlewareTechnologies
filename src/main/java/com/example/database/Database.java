@@ -1,11 +1,11 @@
-package com.example;
+package com.example.database;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.stereotype.Service;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
+import javax.servlet.Filter;
 import javax.sql.DataSource;
 
 /**
@@ -22,5 +22,19 @@ public class Database {
 		dataSource.setPassword("");
 		
 		return dataSource;
+	}
+	
+	@Bean
+	public Filter logFilter() {
+		CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
+		filter.setIncludeQueryString(true);
+		filter.setIncludePayload(true);
+		filter.setMaxPayloadLength(5120);
+		return filter;
+	}
+	
+	@Bean
+	public CarteRowMapper carteRowMapper() {
+		return new CarteRowMapper();
 	}
 }
