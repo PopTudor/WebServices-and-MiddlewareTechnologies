@@ -15,10 +15,12 @@ public class CarteRowMapper implements RowMapper<Carte> {
 		int index = rs.findColumn(CarteContract.id);
 		int author = rs.findColumn(CarteContract.author);
 		int title = rs.findColumn(CarteContract.title);
+		int pret = rs.findColumn(CarteContract.pret);
 		return Carte.builder()
 				.id(rs.getInt(index))
 				.author(rs.getString(author))
 				.title(rs.getString(title))
+				.pret(rs.getDouble(pret))
 				.build();
 	}
 }

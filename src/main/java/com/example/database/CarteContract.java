@@ -7,4 +7,5 @@ public interface CarteContract {
 	String title = "title";
 	String author = "author";
 	String id = "id";
+	String pret = "pret";
 }

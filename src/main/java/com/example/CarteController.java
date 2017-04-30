@@ -36,7 +36,7 @@ public class CarteController {
 		int status = carteService.saveCarte(carte);
 		return ResponseEntity.status(status).build();
 	}
+	
 }
-
 
 

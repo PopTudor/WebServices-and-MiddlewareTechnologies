@@ -23,13 +23,42 @@ public class Tema5Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Tema5Application.class, args);
 	}
-
+//
 //	@PostConstruct
 //	public void insertData() {
 //		ddlSetup();
-//		Carte carte = Carte.builder().author("me").title("tree").build();
-//		Stream.of(carte).forEach(carte1 -> {
-//			jdbcTemplate.update("INSERT  INTO  carti(author,title) VALUES (?,?)", carte.getAuthor(), carte.getTitle());
+//		List<Carte> list = Arrays.asList(
+//				Carte.builder()
+//						.author("Ion Creanga")
+//						.title("La scaldat")
+//						.pret(11.4)
+//						.build(),
+//				Carte.builder()
+//						.author("George Cosbuc")
+//						.title("Nunta Zamfirei")
+//						.pret(13.0)
+//						.build(),
+//				Carte.builder()
+//						.author("Ion Creanga")
+//						.title("Capra cu trei iezi")
+//						.pret(11.8)
+//						.build(),
+//				Carte.builder()
+//						.author("Ion Luca Caragiale")
+//						.title("O noapte furtunoasa")
+//						.pret(14.0)
+//						.build(),
+//				Carte.builder()
+//						.author("Ion Creanga")
+//						.title("Povestea lui Harap Alb")
+//						.pret(15.6)
+//						.build()
+//		);
+//		list.forEach(carte1 -> {
+//			jdbcTemplate.update("INSERT  INTO  carti(author,title, pret) VALUES (?,?,?)",
+//					carte1.getAuthor(),
+//					carte1.getTitle(),
+//					carte1.getPret());
 //		});
 //	}
 	
@@ -55,13 +84,23 @@ public class Tema5Application {
 	private void ddlSetup(Connection connection) throws SQLException {
 		try (Statement statement = connection.createStatement()) {
 			statement.execute("DROP TABLE IF EXISTS carti");
-			statement.execute("CREATE TABLE carti(id INTEGER PRIMARY KEY , author VARCHAR(255), title VARCHAR(255))");
+			statement.execute("CREATE TABLE carti(" +
+					"id INTEGER PRIMARY KEY , " +
+					"author VARCHAR(255), " +
+					"title VARCHAR(255), " +
+					"pret DOUBLE" +
+					")");
 		}
 	}
 	
 	private void ddlSetup() {
 		jdbcTemplate.execute("DROP TABLE IF EXISTS carti");
-		jdbcTemplate.execute("CREATE TABLE carti(id INTEGER PRIMARY KEY , author VARCHAR(255), title VARCHAR(255))");
+		jdbcTemplate.execute("CREATE TABLE carti(" +
+				"id INTEGER PRIMARY KEY ," +
+				"author VARCHAR(255)," +
+				"title VARCHAR(255)," +
+				"pret DOUBLE" +
+				")");
 	}
 	
 }

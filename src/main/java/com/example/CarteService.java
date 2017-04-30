@@ -29,8 +29,8 @@ public class CarteService {
 	
 	public int saveCarte(Carte carte) {
 		PreparedStatementSetter setter = new ArgumentPreparedStatementSetter(
-				new Object[]{carte.getAuthor(), carte.getTitle()});
-		return jdbcTemplate.update("INSERT INTO carti(author,title) VALUES (?,?)", setter);
+				new Object[]{carte.getAuthor(), carte.getTitle(), carte.getPret()});
+		return jdbcTemplate.update("INSERT INTO carti(author,title, pret) VALUES (?,?,?)", setter);
 	}
 	
 	public List<Carte> getAllCarti() {

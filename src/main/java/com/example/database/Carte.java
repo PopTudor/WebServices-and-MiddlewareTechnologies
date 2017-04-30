@@ -15,5 +15,6 @@ import lombok.NoArgsConstructor;
 public class Carte {
     String title;
     String author;
-    int id;
+	double pret;
+	int id;
 }
