@@ -36,15 +36,15 @@ public class CarteController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<String> saveCarte(@RequestBody Carte carte) {
+	public ResponseEntity<Integer> saveCarte(@RequestBody Carte carte) {
 		int status = carteService.saveCarte(carte);
-		return ResponseEntity.status(status).build();
+		return ResponseEntity.ok(status);
 	}
 	
 	@PutMapping("{title}")
 	public ResponseEntity<String> updateCarte(@PathVariable("title") String title, @RequestBody Carte carte) {
 		int status = carteService.update(title, carte);
-		return ResponseEntity.status(status).build();
+		return ResponseEntity.ok(String.valueOf(status));
 	}
 }
 
