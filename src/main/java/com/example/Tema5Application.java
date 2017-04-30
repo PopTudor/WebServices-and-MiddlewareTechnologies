@@ -1,6 +1,5 @@
 package com.example;
 
-import com.example.database.Carte;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class Tema5Application {
@@ -26,15 +23,15 @@ public class Tema5Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Tema5Application.class, args);
 	}
-	
-	@PostConstruct
-	public void insertData() {
-		ddlSetup();
-		Carte carte = Carte.builder().author("me").title("tree").build();
-		Stream.of(carte).forEach(carte1 -> {
-			jdbcTemplate.update("INSERT  INTO  carti(author,title) VALUES (?,?)", carte.getAuthor(), carte.getTitle());
-		});
-	}
+
+//	@PostConstruct
+//	public void insertData() {
+//		ddlSetup();
+//		Carte carte = Carte.builder().author("me").title("tree").build();
+//		Stream.of(carte).forEach(carte1 -> {
+//			jdbcTemplate.update("INSERT  INTO  carti(author,title) VALUES (?,?)", carte.getAuthor(), carte.getTitle());
+//		});
+//	}
 	
 	//	@PostConstruct
 //	public void insertTestData() {

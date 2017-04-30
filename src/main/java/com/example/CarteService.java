@@ -22,6 +22,10 @@ public class CarteService {
 		return jdbcTemplate.queryForObject("SELECT * FROM carti WHERE title = ?", title, new CarteRowMapper());
 	}
 	
+	List<Carte> getCartiByAuthor(String... author) {
+		return jdbcTemplate.query("SELECT * FROM carti WHERE author LIKE ?", author, new CarteRowMapper());
+	}
+	
 	public ResponseEntity<String> saveCarte(Carte carte) {
 		return null;
 	}

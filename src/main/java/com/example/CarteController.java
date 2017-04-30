@@ -26,6 +26,11 @@ public class CarteController {
 		return carteService.getCarte(carteTitle);
 	}
 	
+	@GetMapping(params = "author")
+	public List<Carte> cartiByAuthor(String author) {
+		return carteService.getCartiByAuthor(author);
+	}
+	
 	@PostMapping
 	public ResponseEntity<String> saveCarte(@RequestBody Carte carte) {
 		return carteService.saveCarte(carte);
