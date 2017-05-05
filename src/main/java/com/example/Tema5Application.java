@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.carte.Carte;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +9,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
 
 @SpringBootApplication
 public class Tema5Application {
@@ -23,44 +29,44 @@ public class Tema5Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Tema5Application.class, args);
 	}
-//
-//	@PostConstruct
-//	public void insertData() {
-//		ddlSetup();
-//		List<Carte> list = Arrays.asList(
-//				Carte.builder()
-//						.author("Ion Creanga")
-//						.title("La scaldat")
-//						.pret(11.4)
-//						.build(),
-//				Carte.builder()
-//						.author("George Cosbuc")
-//						.title("Nunta Zamfirei")
-//						.pret(13.0)
-//						.build(),
-//				Carte.builder()
-//						.author("Ion Creanga")
-//						.title("Capra cu trei iezi")
-//						.pret(11.8)
-//						.build(),
-//				Carte.builder()
-//						.author("Ion Luca Caragiale")
-//						.title("O noapte furtunoasa")
-//						.pret(14.0)
-//						.build(),
-//				Carte.builder()
-//						.author("Ion Creanga")
-//						.title("Povestea lui Harap Alb")
-//						.pret(15.6)
-//						.build()
-//		);
-//		list.forEach(carte1 -> {
-//			jdbcTemplate.update("INSERT  INTO  carti(author,title, pret) VALUES (?,?,?)",
-//					carte1.getAuthor(),
-//					carte1.getTitle(),
-//					carte1.getPret());
-//		});
-//	}
+
+	@PostConstruct
+	public void insertData() {
+		ddlSetup();
+		List<Carte> list = Arrays.asList(
+				Carte.builder()
+						.author("Ion Creanga")
+						.title("La scaldat")
+						.pret(11.4)
+						.build(),
+				Carte.builder()
+						.author("George Cosbuc")
+						.title("Nunta Zamfirei")
+						.pret(13.0)
+						.build(),
+				Carte.builder()
+						.author("Ion Creanga")
+						.title("Capra cu trei iezi")
+						.pret(11.8)
+						.build(),
+				Carte.builder()
+						.author("Ion Luca Caragiale")
+						.title("O noapte furtunoasa")
+						.pret(14.0)
+						.build(),
+				Carte.builder()
+						.author("Ion Creanga")
+						.title("Povestea lui Harap Alb")
+						.pret(15.6)
+						.build()
+		);
+		list.forEach(carte1 -> {
+			jdbcTemplate.update("INSERT  INTO  carti(author,title, pret) VALUES (?,?,?)",
+					carte1.getAuthor(),
+					carte1.getTitle(),
+					carte1.getPret());
+		});
+	}
 	
 	//	@PostConstruct
 //	public void insertTestData() {

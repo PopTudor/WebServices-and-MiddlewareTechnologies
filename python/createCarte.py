@@ -10,6 +10,5 @@ resp = requests.post(uri+path,json = {
     'author':'Marin Preda',
     'pret':'20.1'
 })
-if resp.status_code != 200:
-    raise ApiError('POST /carti {}'.format(resp.status_code))
+
 print resp
